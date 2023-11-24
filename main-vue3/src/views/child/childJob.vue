@@ -1,5 +1,7 @@
 <template>
-  <div>子应用 -- job</div>
+  <div>
+    <micro-app name="childJob" url="http://localhost:8080"></micro-app>
+  </div>
 </template>
 
 <script setup></script>
