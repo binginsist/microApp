@@ -1,5 +1,7 @@
 <template>
-  <div>子应用 -- about</div>
+  <div>
+    <micro-app name="childAbout" url="http://localhost:3003/"></micro-app>
+  </div>
 </template>
 
 <script setup></script>

@@ -4,6 +4,7 @@ import "./index.scss";
 import About from "./views/about";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
+import "./public-path";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

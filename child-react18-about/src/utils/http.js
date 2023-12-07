@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "http://hrotest.huokesaas.com";
+axios.defaults.baseURL = "";
 axios.defaults.headers["x-client-token"] = "";
 
 const Net = {
