@@ -280,10 +280,22 @@ export default {
       total: 0,
       jobType1: "", // 职位类型
       workCity: "", // 地点
-      jobTypeArr,
+      jobTypeArr: [],
     };
   },
   mounted() {
+    if (window.__MICRO_APP_ENVIRONMENT__) {
+      this.jobTypeArr = window.rawWindow.jobTypeArr;
+      console.log("微前端环境获取的字典");
+      const { homeSearchValue } = window.microApp.getGlobalData();
+      if (homeSearchValue) {
+        this.searchName = homeSearchValue;
+        // this.searchJobList();
+      }
+    } else {
+      this.jobTypeArr = jobTypeArr;
+      console.log("非微前端环境获取的字典");
+    }
     this.getAddressDict();
     this.searchJobList();
   },

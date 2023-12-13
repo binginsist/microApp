@@ -8,9 +8,11 @@ const route = useRoute();
 </script>
 
 <template>
-  <common-header v-if="route.name !== 'login'" />
-  <main-container />
-  <common-footer v-if="route.name !== 'login'" />
+  <el-config-provider namespace="ep">
+    <common-header v-if="route.name !== 'login'" />
+    <main-container />
+    <common-footer v-if="route.name !== 'login'" />
+  </el-config-provider>
 </template>
 
 <style scoped lang="scss"></style>

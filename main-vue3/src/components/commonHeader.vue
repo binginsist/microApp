@@ -4,7 +4,9 @@ import { useRouter } from "vue-router";
 import microApp from "@micro-zoe/micro-app";
 import loginApi from "@/api/loginApi";
 
-const activeIndex = ref("home");
+const cacheActiveIndex = localStorage.getItem("activeIndex");
+
+const activeIndex = ref(cacheActiveIndex || "home");
 const router = useRouter();
 const { proxy } = getCurrentInstance();
 
@@ -66,10 +68,10 @@ function logout() {
         >退出</el-button
       >
       <el-button
-        v-else
         round
         plain
         size="small"
+        v-else
         class="login-btn"
         @click="() => router.push({ name: 'login' })"
         >登录</el-button
@@ -81,13 +83,15 @@ function logout() {
 <style scoped lang="scss">
 .common-header {
   background-color: #202329;
+  ul {
+    padding-left: 200px;
+  }
   .el-menu {
     display: flex;
     margin: 0 auto;
     width: 1200px;
     border: none;
     padding-left: 200px;
-    height: 46px;
     .el-menu-item {
       height: 46px;
     }

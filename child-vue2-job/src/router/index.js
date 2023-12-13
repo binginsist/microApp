@@ -10,7 +10,7 @@ const jobDetail = (r) =>
 
 export default new Router({
   mode: "history",
-  base: "/",
+  base: window.__MICRO_APP_BASE_ROUTE__ || process.env.BASE_URL,
   routes: [
     {
       name: "findJob",

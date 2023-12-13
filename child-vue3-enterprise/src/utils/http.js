@@ -2,16 +2,16 @@ import axios from "axios";
 import { ElMessageBox } from "element-plus";
 axios.defaults.baseURL = "";
 
-// if (window.__MICRO_APP_ENVIRONMENT__) {
-//   const dataForChild = window.microApp.getData()
-//   if (dataForChild) {
-//     const { token } = dataForChild
-//     axios.defaults.headers["x-client-token"] = token;
-//   }
-// } else {
-//    axios.defaults.headers["x-client-token"] = 'fb2904e4c541445a8e986d2af2bd94bb';
-//   }
-axios.defaults.headers["x-client-token"] = "1756e75e71ed4a8f813fe9f385273572";
+if (window.__MICRO_APP_ENVIRONMENT__) {
+  const dataFromParent = window.microApp.getData();
+  // console.log("dataFromParent", dataFromParent);
+  if (dataFromParent) {
+    const { token = "" } = dataFromParent;
+    axios.defaults.headers["x-client-token"] = token;
+  }
+} else {
+  axios.defaults.headers["x-client-token"] = "1756e75e71ed4a8f813fe9f385273572";
+}
 
 const Net = {
   getJson: function (url, params) {

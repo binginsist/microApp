@@ -226,7 +226,7 @@
 </template>
 
 <script>
-import Vue from "vue";
+// import Vue from "vue";
 import homeApi from "@/api/homeApi";
 import { jobType as jobTypeArr } from "@/assets/js/dictData";
 
@@ -234,7 +234,7 @@ export default {
   asyncData({ store, params }) {
     return homeApi.getIndexData(params).then((res) => {
       const { data } = res;
-      const { hotJobList, famousEnterpriseList, newJobList } = data;
+      // const { hotJobList, famousEnterpriseList, newJobList } = data;
 
       return { homeData: data };
     });
@@ -251,13 +251,19 @@ export default {
   mounted() {},
   methods: {
     changeSelect() {},
-    searchIt() {},
+    searchIt() {
+      const { homeSearchValue } = this;
+      if (window.__MICRO_APP_ENVIRONMENT__) {
+        if (homeSearchValue) {
+          window.microApp.setGlobalData({ homeSearchValue });
+          const baseRouter = window.microApp.router.getBaseAppRouter();
+          baseRouter.push("/main/childJob");
+        }
+      }
+    },
     toJobList() {
       if (window.__MICRO_APP_ENVIRONMENT__) {
-        debugger;
-        window.microApp.dispatch({
-          activeIndex: "job",
-        });
+        window.microApp.dispatch({ activeIndex: "job" });
       }
     },
     toJobDetail() {},
